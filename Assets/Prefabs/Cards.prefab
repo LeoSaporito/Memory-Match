@@ -151,14 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81756e83f3a632d419b8da1ab7a0085d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cards
-  xSpacing: 3
+  xSpacing: 2
   ySpacing: 2
-  xOffset: -5
-  yOffset: -3
-  oneBlue: {fileID: 7579936702941083086, guid: c02f8e988452ee74d8c3b53e84489446, type: 3}
-  twoGreen: {fileID: 1768877964156999612, guid: 3bbd51ca29ff740459f3a96d6d52d671, type: 3}
-  coin: {fileID: -3338749442709606003, guid: 7f1795e6cfdad514e8820ff8d27c7d30, type: 3}
-  train: {fileID: -4368322862165430076, guid: 9836232169430f442a9de746633f627a, type: 3}
-  joker: {fileID: 6421856297837412101, guid: cb002b11748f5ba4f917110ceed25192, type: 3}
-  stopSign: {fileID: 5014636096960209065, guid: 2166aa1a9304e7a47bd1d58ba17f1fbd, type: 3}
+  xOffset: -3
+  yOffset: -2
   back: {fileID: 5000927251509650613, guid: 1e532ca8778cf004e9f57b6849370e91, type: 3}
+  isRevealed: 0

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Cards : MonoBehaviour
@@ -8,18 +7,44 @@ public class Cards : MonoBehaviour
     [SerializeField] float xOffset;
     [SerializeField] float yOffset;
 
-    public Sprite oneBlue, twoGreen, coin, train, joker, stopSign, back;
+    public Sprite back;
 
+    Sprite face;
+    
+    SpriteRenderer sr;
     float xPosition;
     float yPosition;
 
+    public bool isRevealed;
+
     int[] numbers = new int[12];
 
+    private void Awake()
+    {
+        this.isRevealed = false;
+        sr = GetComponent<SpriteRenderer>();        
+    }
     public void Activate()
     {
         AdjustPosition();
+        Hide();
+    }
 
-        GetComponent<SpriteRenderer>().sprite = back;
+    public void SetFace(Sprite newFace)
+    {
+        face = newFace;
+    }
+
+    public void Reveal()
+    {
+        sr.sprite = face;
+        this.isRevealed = true;
+    }
+
+    public void Hide()
+    {
+        sr.sprite = back;
+        this.isRevealed = false;
     }
 
     public void SetXPosition(int x)
@@ -43,55 +68,5 @@ public class Cards : MonoBehaviour
         y += yOffset;
 
         this.transform.position = new Vector2(x, y);
-    }
-
-    void CardFaces()
-    {
-        List<int> availableNumbers = new List<int>();
-
-        for (int i = 0; i < numbers.Length; i++)
-        {
-            availableNumbers.Add(i);
-        }
-
-        for (int i = 0; i < numbers.Length; i++)
-        {
-            int randomNumber = Random.Range(0, availableNumbers.Count);
-
-            numbers[i] = availableNumbers[randomNumber];
-
-            availableNumbers.RemoveAt(randomNumber);
-        }
-
-        for (int i = 0; i < numbers.Length; i++)
-        {
-            switch (numbers[i])
-            {
-                case 0: case 1: 
-                this.GetComponent<SpriteRenderer>().sprite = oneBlue;
-                break;
-
-                case 2: case 3:
-                this.GetComponent<SpriteRenderer>().sprite = twoGreen;
-                break;
-
-                case 4:case 5:
-                this.GetComponent<SpriteRenderer>().sprite = coin;
-                break;
-
-                case 6: case 7:
-                this.GetComponent<SpriteRenderer>().sprite = train;
-                break;
-
-                case 8: case 9:
-                this.GetComponent<SpriteRenderer>().sprite = joker;
-                break;
-
-                case 10:
-                case 11:
-                this.GetComponent<SpriteRenderer>().sprite = stopSign;
-                break;
-            }
-        }
-    }
+    }    
 }
