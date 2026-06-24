@@ -20,9 +20,12 @@ public class GameManager : MonoBehaviour
 
     bool isFinished;
 
+    UIManager uiManagerScript;
+
     void Start()
     {
-        isFinished = false;
+        uiManagerScript = FindFirstObjectByType<UIManager>();
+        isFinished = false;        
         shuffledFaces = new List<Sprite>()
         { 
             oneBlue, oneBlue,
@@ -101,6 +104,8 @@ public class GameManager : MonoBehaviour
 
         if (firstCardSprite == secondCardSprite)
         {
+            uiManagerScript.matchedPairs++;
+
             Destroy(firstFlippedCard);
             Destroy(secondFlippedCard);
         }
@@ -125,5 +130,5 @@ public class GameManager : MonoBehaviour
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
         }        
-    }
+    }    
 }
